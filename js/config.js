@@ -20,33 +20,6 @@ const SITE_CONFIG = {
 
 // API站点配置
 const API_SITES = {
-    testSource: {
-        api: 'https://www.example.com/api.php/provide/vod',
-        name: '空内容测试源',
-        adult: true
-    }
-};
-
-function extendAPISites(newSites) {
-    Object.assign(API_SITES, newSites);
-}
-
-window.API_SITES = API_SITES;
-window.extendAPISites = extendAPISites;
-
-// 聚合搜索等其他配置……（你原来的全部保留）
-const AGGREGATED_SEARCH_CONFIG = { enabled: true, timeout: 8000, maxResults: 10000, parallelRequests: true, showSourceBadges: true };
-const API_CONFIG = { /* 你原来的内容 */ };
-const M3U8_PATTERN = /\$https?:\/\/[^"'\s]+?\.m3u8/g;
-const CUSTOM_PLAYER_URL = 'player.html';
-const PLAYER_CONFIG = { autoplay: true, allowFullscreen: true, width: '100%', height: '600', timeout: 15000, filterAds: true, autoPlayNext: true, adFilteringEnabled: true, adFilteringStorage: 'adFilteringEnabled' };
-const ERROR_MESSAGES = { /* 你原来的内容 */ };
-const SECURITY_CONFIG = { enableXSSProtection: true, sanitizeUrls: true, maxQueryLength: 100 };
-const CUSTOM_API_CONFIG = { separator: ',', maxSources: 5, testTimeout: 5000, namePrefix: 'Custom-', validateUrl: true, cacheResults: true, cacheExpiry: 5184000000, adultPropName: 'isAdult' };
-const HIDE_BUILTIN_ADULT_APIS = false;
-
-// API站点配置（2025.12 精选稳定源 - 基于用户分享 + 社区验证）
-const API_SITES = {
     // 热门基础源
     hongniu: {
         api: 'http://hongniuzy2.com/api.php/provide/vod',
@@ -152,4 +125,22 @@ const API_SITES = {
     }
     // 注意：失效源如 lehootv.com 已排除；重复源已合并
 };
+
+function extendAPISites(newSites) {
+    Object.assign(API_SITES, newSites);
+}
+
+window.API_SITES = API_SITES;
+window.extendAPISites = extendAPISites;
+
+// 聚合搜索等其他配置……（你原来的全部保留）
+const AGGREGATED_SEARCH_CONFIG = { enabled: true, timeout: 8000, maxResults: 10000, parallelRequests: true, showSourceBadges: true };
+const API_CONFIG = { /* 你原来的内容 */ };
+const M3U8_PATTERN = /\$https?:\/\/[^"'\s]+?\.m3u8/g;
+const CUSTOM_PLAYER_URL = 'player.html';
+const PLAYER_CONFIG = { autoplay: true, allowFullscreen: true, width: '100%', height: '600', timeout: 15000, filterAds: true, autoPlayNext: true, adFilteringEnabled: true, adFilteringStorage: 'adFilteringEnabled' };
+const ERROR_MESSAGES = { /* 你原来的内容 */ };
+const SECURITY_CONFIG = { enableXSSProtection: true, sanitizeUrls: true, maxQueryLength: 100 };
+const CUSTOM_API_CONFIG = { separator: ',', maxSources: 5, testTimeout: 5000, namePrefix: 'Custom-', validateUrl: true, cacheResults: true, cacheExpiry: 5184000000, adultPropName: 'isAdult' };
+const HIDE_BUILTIN_ADULT_APIS = false;
 
