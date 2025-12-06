@@ -45,36 +45,3 @@ const SECURITY_CONFIG = { enableXSSProtection: true, sanitizeUrls: true, maxQuer
 const CUSTOM_API_CONFIG = { separator: ',', maxSources: 5, testTimeout: 5000, namePrefix: 'Custom-', validateUrl: true, cacheResults: true, cacheExpiry: 5184000000, adultPropName: 'isAdult' };
 const HIDE_BUILTIN_ADULT_APIS = false;
 
-// ====================== 新增：彻底干掉全屏底部细进度条（2025终极版）======================
-document.addEventListener('DOMContentLoaded', () => {
-    // 每当有新节点加入页面时（DPlayer 是动态创建的）
-    const killProgressBar = () => {
-        const bars = document.querySelectorAll(`
-            .dplayer-controller,
-            .dplayer-bar-wrap,
-            .dplayer-bar,
-            .dplayer-controller-mask,
-            .dplayer-bar-time,
-            .dplayer-ptime,
-            .dplayer-fulllive .dplayer-bar-wrap,
-            .dplayer-full .dplayer-bar-wrap
-        `);
-        bars.forEach(el => {
-            el.style.cssText += 'height:0!important;min-height:0!important;opacity:0!important;overflow:hidden!important;pointer-events:none!important;display:none!important;';
-        });
-    };
-
-    // 立即执行一次
-    killProgressBar();
-
-    // 持续监听（DPlayer 全屏切换时会重新生成）
-    const observer = new MutationObserver(killProgressBar);
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    // 全屏切换时再强制杀一次（双保险）
-    document.addEventListener('fullscreenchange', () => {
-        setTimeout(killProgressBar, 100);
-        setTimeout(killProgressBar, 500);
-    });
-});
-// ====================================================================================
