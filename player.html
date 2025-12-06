@@ -280,3 +280,39 @@
     </script>
 </body>
 </html>
+
+<style>
+/* ArtPlayer 全屏底部细进度条彻底灭绝 - 2025终极版（专治你这种顽固条） */
+.artplayer-app,
+.art-bottom,
+.art-progress,
+.art-progress-inner,
+.art-progress-loaded,
+.art-progress-played,
+.art-progress-hover,
+.art-control-progress-inner,
+.art-control-progress {
+    height: 0px !important;
+    min-height: 0px !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    transform: scaleY(0) !important;
+}
+
+/* 伪元素也一起干掉 */
+.art-progress-played::after,
+.art-progress-hover::after,
+.art-control-progress-inner::after {
+    display: none !important;
+    height: 0 !important;
+}
+
+/* 全屏时强制黑到底 */
+.artplayer-fullscreen .art-bottom,
+.artplayer-fullscreen .art-control,
+.artplayer-fullscreen .art-control-progress {
+    display: none !important;
+}
+</style>
+
