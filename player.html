@@ -282,31 +282,24 @@
 </html>
 
 <style>
-/* ArtPlayer 2025 精准灭细进度条 —— 只杀条，不伤控件 */
-.art-bottom {
-    height: 8px !important;            /* 留一点高度给全屏按钮能点到 */
-    padding-bottom: 0 !important;
-    padding-top: 0 !important;
-}
-
-.art-control-progress,
-.art-progress {
-    height: 0px !important;
+/* 仅全屏时彻底干掉进度条，其他时候完全正常 */
+.artplayer-fullscreen .art-bottom,
+.artplayer-fullscreen .art-control-progress,
+.artplayer-fullscreen .art-progress,
+.artplayer-fullscreen .art-progress-inner,
+.artplayer-fullscreen .art-progress-played,
+.artplayer-fullscreen .art-progress-loaded,
+.artplayer-fullscreen .art-progress-hover {
+    height: 0 !important;
     min-height: 0 !important;
     opacity: 0 !important;
     overflow: hidden !important;
     pointer-events: none !important;
 }
 
-/* 伪元素点、滑块也一起干掉 */
-.art-progress-played::after,
-.art-progress-hover::after,
-.art-control-progress-inner::after {
+/* 全屏时把伪元素小圆点也杀了 */
+.artplayer-fullscreen .art-progress-played::after,
+.artplayer-fullscreen .art-control-progress-inner::after {
     display: none !important;
-}
-
-/* 全屏时彻底黑到底 */
-.artplayer-fullscreen .art-bottom {
-    height: 0 !important;
 }
 </style>
